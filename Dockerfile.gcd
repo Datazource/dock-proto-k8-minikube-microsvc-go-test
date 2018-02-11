@@ -1,0 +1,12 @@
+FROM golang:1.9.4
+
+WORKDIR /go/src/docker_kube/gcd
+COPY gcd .
+COPY pb ../pb
+
+RUN go get -v ./...
+RUN go install -v ./...
+
+EXPOSE 3000
+
+CMD [ "gcd" ] 
